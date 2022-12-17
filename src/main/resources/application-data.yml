@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306
+    username: root
+    password: 0123456789
+  jpa:
+    database: mysql
+    #    database-platform: org.hibernate.dialect.
+    show-sql: true
+    open-in-view: true
+    generate-ddl: true
+    format_sql: true
+    hibernate:
+      ddl-auto: create  # ddl 설정. dev 단계에서 auto 기능 사용.
