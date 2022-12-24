@@ -26,6 +26,7 @@ class TodoRepositoryTest {
 
         //  save
         TodoEntity saveEntity = repository.save(todoEntity);
+        System.out.println(saveEntity);
         Assertions.assertNotNull(saveEntity);
 
         //  find entity
@@ -47,5 +48,6 @@ class TodoRepositoryTest {
         repository.delete(findEntity);
         Assertions.assertNull(repository.findById(1L).orElse(null));
     }
+
 
 }
