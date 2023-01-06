@@ -20,11 +20,11 @@ public class TodoEntityDTO {
         this.done = done;
     }
 
-    public TodoEntity toEntity(final TodoEntityDTO dto) {
+    public TodoEntity toEntity() {
         return TodoEntity.builder()
-                .userId(dto.getUserId())
-                .title(dto.getTitle())
-                .done(dto.isDone())
+                .userId(getUserId())
+                .title(getTitle())
+                .done(isDone())
                 .build();
     }
 

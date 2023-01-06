@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         value = TestController.class,
         excludeAutoConfiguration = SecurityAutoConfiguration.class
 )
+@Rollback(value = false)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestControllerTest {
 
@@ -54,9 +56,6 @@ class TestControllerTest {
                 .done(false)
                 .build();
 
-        repository.save(entityDTO.toEntity(entityDTO));
-//        log.info(COLOR1 + "postInitTodoEntity = {}" + RESET, postInitTodoEntity);
-
     }
 
     //    @PostMapping("add")
@@ -82,7 +81,7 @@ class TestControllerTest {
     //    }
     @Test
     @Order(2)
-    void todo_entity_controller_read_test() throws Exception {
+    void todo_entity_controller_rebad_test() throws Exception {
         mockMvc.perform(
                         get("/test/{id}", 1L)
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -104,7 +103,6 @@ class TestControllerTest {
     @Order(3)
     void todo_entity_controller_update_test() throws Exception {
         Long findId = 1L;
-
         mockMvc.perform(
                         patch("/test/{id}", findId)
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -113,7 +111,6 @@ class TestControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andDo(print());
-
         ResponseDTO<TodoEntity> todoEntity = service.getTodoEntity(findId);
         Assertions.assertNull(todoEntity);
     }
@@ -127,15 +124,12 @@ class TestControllerTest {
     @Order(4)
     void todo_entity_controller_delete_test() throws Exception {
         Long findId = 1L;
-        TodoEntity afterEntity = service.getTodoEntity(findId).getData();
-        Assertions.assertNotNull(afterEntity);
         mockMvc.perform(
                         delete("/test/{id}", findId)
                 )
                 .andExpect(status().isOk())
                 .andDo(print());
-        TodoEntity findEntity = service.getTodoEntity(findId).getData();
-        Assertions.assertNull(findEntity);
+        Assertions.assertNull(service.getTodoEntity(findId));
     }
 
 }

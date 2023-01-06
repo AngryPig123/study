@@ -5,11 +5,14 @@ spring:
     username: root
     password: 0123456789
   jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
     open-in-view: true
-    generate-ddl: true
-    format_sql: true
     hibernate:
-      ddl-auto: create  # ddl 설정. dev 단계에서 auto 기능 사용.
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    database: mysql

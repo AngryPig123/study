@@ -1,5 +1,6 @@
 package com.deploy.study.service;
 
+import com.deploy.study.advice.CustomBadRequestException;
 import com.deploy.study.common.CommonMessage;
 import com.deploy.study.dto.ResponseDTO;
 import com.deploy.study.dto.user.request.TodoEntityDTO;
@@ -22,7 +23,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public ResponseDTO<TodoEntity> saveTodoEntity(TodoEntityDTO entity) {
         saveValidate(entity);
-        TodoEntity save = todoRepository.save(entity.toEntity(entity));
+        TodoEntity save = todoRepository.save(entity.toEntity());
         return ResponseDTO.<TodoEntity>builder()
                 .status(CommonMessage.successMessage)
                 .data(todoRepository.findByUserIdQuery(save.getUserId()))
@@ -62,11 +63,13 @@ public class TodoServiceImpl implements TodoService {
                 .build();
     }
 
-    private static void saveValidate(TodoEntityDTO entity) {
-        if (entity == null) throw new RuntimeException("Entity cannot be null.");
+    private void saveValidate(TodoEntityDTO entity) {
+
+        if (entity == null) throw new CustomBadRequestException("ET001");
+        if (todoRepository.findByUserIdQuery(entity.getUserId()) != null) throw new CustomBadRequestException("ET003");
         if (entity.getUserId() == null) {
             log.warn(COLOR1 + "Unknown user." + RESET);
-            throw new RuntimeException("Unknown user.");
+            throw new CustomBadRequestException("ET002");
         }
     }
 
