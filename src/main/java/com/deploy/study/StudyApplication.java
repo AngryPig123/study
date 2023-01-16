@@ -1,8 +1,7 @@
 package com.deploy.study;
 
 import com.deploy.study.entity.todo.TodoEntity;
-import com.deploy.study.repository.TodoRepository;
-import com.deploy.study.service.TodoService;
+import com.deploy.study.repository.todo.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

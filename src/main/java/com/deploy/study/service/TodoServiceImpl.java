@@ -1,11 +1,11 @@
 package com.deploy.study.service;
 
-import com.deploy.study.advice.CustomBadRequestException;
+import com.deploy.study.exception.CustomBadRequestException;
 import com.deploy.study.common.CommonMessage;
 import com.deploy.study.dto.ResponseDTO;
 import com.deploy.study.dto.user.request.TodoEntityDTO;
 import com.deploy.study.entity.todo.TodoEntity;
-import com.deploy.study.repository.TodoRepository;
+import com.deploy.study.repository.todo.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

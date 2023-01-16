@@ -1,7 +1,7 @@
 package com.deploy.study.service;
 
 import com.deploy.study.dto.user.request.TodoEntityDTO;
-import com.deploy.study.repository.TodoRepository;
+import com.deploy.study.repository.todo.TodoRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

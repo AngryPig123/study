@@ -1,6 +1,5 @@
 # 최신 11-jdk 이미지로 부터 시작
 FROM openjdk:11-jdk
-MAINTAINER Foo Bar <shguddnr3@naver.com>
 
 # 인자 정리
 ARG JAR_FILE=build/libs/*.jar

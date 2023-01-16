@@ -1,6 +1,7 @@
 package com.deploy.study.repository;
 
 import com.deploy.study.entity.todo.TodoEntity;
+import com.deploy.study.repository.todo.TodoRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

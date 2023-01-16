@@ -1,4 +1,4 @@
-package com.deploy.study.repository;
+package com.deploy.study.repository.todo;
 
 import com.deploy.study.entity.todo.TodoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

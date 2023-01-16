@@ -4,7 +4,7 @@ import com.deploy.study.contoller.todo.TestController;
 import com.deploy.study.dto.ResponseDTO;
 import com.deploy.study.dto.user.request.TodoEntityDTO;
 import com.deploy.study.entity.todo.TodoEntity;
-import com.deploy.study.repository.TodoRepository;
+import com.deploy.study.repository.todo.TodoRepository;
 import com.deploy.study.service.TodoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -131,5 +131,5 @@ class TestControllerTest {
                 .andDo(print());
         Assertions.assertNull(service.getTodoEntity(findId));
     }
-
+    
 }
